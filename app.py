@@ -3,7 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db' # relative path, use //// for abs path
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db' # relative path, use //// for abs path
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:#LHfzmkxo!X4@localhost/flasktodo'
 db = SQLAlchemy(app)
 
 class Todo(db.Model):
