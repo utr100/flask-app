@@ -1,10 +1,17 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask.ext.heroku import Heroku
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db' # relative path, use //// for abs path
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:#LHfzmkxo!X4@localhost/flasktodo'
+
+# Use this for running on local db
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:#LHfzmkxo!X4@localhost/flasktodo'
+
+# Use this for running on Heroku
+heroku = Heroku(app)
+
 db = SQLAlchemy(app)
 
 class Todo(db.Model):
