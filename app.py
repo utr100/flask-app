@@ -7,10 +7,10 @@ app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db' # relative path, use //// for abs path
 
 # Use this for running on local db
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:#LHfzmkxo!X4@localhost/flasktodo'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:#LHfzmkxo!X4@localhost/flasktodo'
 
 # Use this for running on Heroku
-# heroku = Heroku(app)
+heroku = Heroku(app)
 
 db = SQLAlchemy(app)
 
