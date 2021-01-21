@@ -2,15 +2,21 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_heroku import Heroku
+import json
+
+with open("dbconfig.json", "r") as json_data_file:
+    data = json.load(json_data_file)
+
+password = data['postgresql']['password']
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db' # relative path, use //// for abs path
 
 # Use this for running on local db
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:#LHfzmkxo!X4@localhost/flasktodo'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://postgres:{password}@localhost/flasktodo'
 
 # Use this for running on Heroku
-heroku = Heroku(app)
+#heroku = Heroku(app)
 
 db = SQLAlchemy(app)
 
